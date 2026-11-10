@@ -5,16 +5,24 @@
       <span class="eyebrow"><span class="tiny-spark">✳</span> YOUR NEXT BRAIN BREAK</span>
       <h1 id="hero-title">Big brain.<br><span class="accent-text">Small quiz.</span></h1>
       <p class="hero-description">A few questions. A little friendly competition with yourself.<br class="desktop-break"> Let’s find out what you know.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#quiz-builder">Build my quiz <%- include('partials/icon', { name: 'arrow-right' }) %></a>
+        <a class="hero-secondary" href="#how-it-works">How it works <%- include('partials/icon', { name: 'chevron' }) %></a>
+      </div>
       <div class="hero-facts">
         <span><%- include('partials/icon', { name: 'grid' }) %> <%= categories.length %> categories</span>
         <span><%- include('partials/icon', { name: 'layers' }) %> 5 or 10 questions</span>
         <span><%- include('partials/icon', { name: 'check' }) %> Instant results</span>
       </div>
     </div>
-    <img class="hero-art" src="/images/quiz-orbit.svg" width="420" height="320" alt="Illustrated question cards surrounded by stars and an orbit">
+    <div class="hero-visual" aria-hidden="true">
+      <span class="visual-note visual-note-top"><%- include('partials/icon', { name: 'bolt' }) %> A LITTLE BRAIN BOOST</span>
+      <img class="hero-art" src="/images/quiz-orbit.svg" width="420" height="320" alt="">
+      <span class="visual-note visual-note-bottom"><span class="visual-note-icon"><%- include('partials/icon', { name: 'check' }) %></span><span><strong>No timer. No pressure.</strong><span>Just you and your curiosity.</span></span></span>
+    </div>
   </section>
 
-  <section class="builder panel" aria-labelledby="builder-title">
+  <section class="builder panel" id="quiz-builder" aria-labelledby="builder-title">
     <div class="section-heading">
       <div class="heading-with-number"><span class="step-label">01</span><div><h2 id="builder-title">Make it your kind of challenge.</h2><p>Pick a topic. Set the vibe. You’re ready.</p></div></div>
       <span class="pill quiet-pill">THE QUIZ BUILDER</span>
@@ -28,10 +36,11 @@
       <div class="field-heading"><span class="field-label">Choose your topic</span><span class="optional-label">A shortcut to your favorites</span></div>
       <div class="topic-grid" aria-label="Quick topic selection">
         <% shortcuts.forEach((topic) => { %>
-          <button type="button" class="topic-card <%= values.category === topic.id ? 'is-selected' : '' %>" data-category="<%= topic.id %>" aria-pressed="<%= values.category === topic.id %>">
+          <button type="button" class="topic-card <%= values.category === topic.id ? 'is-selected' : '' %>" data-category="<%= topic.id %>" data-topic="<%= topic.icon %>" aria-pressed="<%= values.category === topic.id %>">
             <span class="topic-icon"><%- include('partials/icon', { name: topic.icon }) %></span>
             <span class="topic-copy"><strong><%= topic.label %></strong><span><%= topic.detail %></span></span>
             <span class="topic-check"><%- include('partials/icon', { name: 'check' }) %></span>
+            <span class="topic-arrow"><%- include('partials/icon', { name: 'arrow-right' }) %></span>
           </button>
         <% }); %>
       </div>
@@ -73,7 +82,7 @@
     </form>
   </section>
 
-  <section class="how-section" aria-label="How QuizForge works">
+  <section class="how-section" id="how-it-works" aria-label="How QuizForge works">
     <div><span class="how-number">01 /</span><h3>Find your lane</h3><p>Choose something you love, or discover something you don’t know yet.</p></div>
     <div><span class="how-number">02 /</span><h3>Trust your instinct</h3><p>Choose one answer per question. Take your time and enjoy the challenge.</p></div>
     <div><span class="how-number">03 /</span><h3>Leave a little wiser</h3><p>Get your score and a full answer review. Every round teaches you something.</p></div>

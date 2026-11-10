@@ -13,6 +13,7 @@
 - Server sessions keep the answer key out of the quiz HTML.
 - Score, percentage, achievement label, and a question-by-question review.
 - Responsive dark interface, labeled form controls, keyboard focus states, and a progress indicator.
+- Color-coded topic cards, a softly animated hero with quick navigation, and rank-themed result panels; animations respect reduced-motion preferences.
 - Server-side validation, friendly 404/API error pages, and centralized error handling.
 - HTTP request logging, an eight-second API timeout, category caching, and API rate-limit handling.
 
