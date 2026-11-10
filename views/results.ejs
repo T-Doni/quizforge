@@ -1,0 +1,33 @@
+<%- include('partials/header') %>
+<main id="main" class="container narrow-container">
+  <div class="page-intro result-intro"><span class="eyebrow"><%- include('partials/icon', { name: 'check' }) %> ROUND COMPLETE</span><h1>You showed up.<br><span class="accent-text">Your curiosity paid off.</span></h1></div>
+  <section class="score-panel panel" aria-labelledby="score-title">
+    <div class="score-ring" style="--score: <%= result.percentage %>;" role="img" aria-label="<%= result.correct %> out of <%= result.total %> correct, <%= result.percentage %> percent">
+      <div><strong><%= result.correct %><span>/<%= result.total %></span></strong><span>YOUR SCORE</span></div>
+    </div>
+    <div class="score-copy"><span class="rank-label"><%- include('partials/icon', { name: 'trophy' }) %> <%= result.rank %></span><h2 id="score-title"><%= result.percentage >= 80 ? 'That’s some serious knowledge.' : result.percentage >= 50 ? 'A solid round. Nicely done.' : 'Every answer is a new discovery.' %></h2><p><%= result.percentage === 100 ? 'A perfect round! Try a harder difficulty and keep the streak of curiosity going.' : 'The best part? You know a little more than when you started. Take a look at your answers below.' %></p><div class="meta-pills"><span class="pill"><%= result.settings.categoryName %></span><span class="pill"><%= result.settings.difficulty === 'any' ? 'Mixed' : result.settings.difficulty %> difficulty</span></div></div>
+  </section>
+  <div class="stats-grid">
+    <div class="stat-card"><span class="stat-icon correct-color"><%- include('partials/icon', { name: 'check' }) %></span><div><strong><%= result.correct %></strong><span>Correct answers</span></div></div>
+    <div class="stat-card"><span class="stat-icon wrong-color"><%- include('partials/icon', { name: 'layers' }) %></span><div><strong><%= result.total - result.correct %></strong><span>Things to discover</span></div></div>
+    <div class="stat-card"><span class="stat-icon accent-text"><%- include('partials/icon', { name: 'target' }) %></span><div><strong><%= result.percentage %>%</strong><span>Accuracy</span></div></div>
+  </div>
+  <div class="review-heading"><div><span class="eyebrow">THE LEARNING PART</span><h2>Your answer breakdown</h2></div><a class="button button-secondary" href="/">Play another round <%- include('partials/icon', { name: 'arrow-right' }) %></a></div>
+  <% result.review.forEach((question, index) => { %>
+    <section class="question-card review-card panel" aria-labelledby="review-<%= question.id %>">
+      <div class="question-meta"><span class="question-number">QUESTION <%= String(index + 1).padStart(2, '0') %></span><span class="answer-status <%= question.isCorrect ? 'correct-color' : 'wrong-color' %>"><%- include('partials/icon', { name: question.isCorrect ? 'check' : 'x' }) %> <%= question.isCorrect ? 'Got it right' : 'Something new to learn' %></span></div>
+      <h3 id="review-<%= question.id %>"><%= question.text %></h3>
+      <ul class="review-answers">
+        <% question.answers.forEach((answer) => { %>
+          <li class="result-answer <%= answer.id === question.correctAnswerId ? 'is-correct' : answer.id === question.selectedAnswerId ? 'is-wrong' : '' %>">
+            <span><%= answer.text %></span>
+            <% if (answer.id === question.correctAnswerId) { %><span class="answer-tag"><%- include('partials/icon', { name: 'check' }) %><%= question.isCorrect ? 'Your answer · correct' : 'Correct answer' %></span>
+            <% } else if (answer.id === question.selectedAnswerId) { %><span class="answer-tag"><%- include('partials/icon', { name: 'x' }) %> Your answer</span><% } %>
+          </li>
+        <% }); %>
+      </ul>
+    </section>
+  <% }); %>
+  <div class="bottom-cta"><span class="tiny-spark">✳</span><h2>There’s always something else to discover.</h2><a class="button button-primary" href="/">Find my next challenge <%- include('partials/icon', { name: 'arrow-right' }) %></a></div>
+</main>
+<%- include('partials/footer') %>

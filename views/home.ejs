@@ -1,0 +1,82 @@
+<%- include('partials/header') %>
+<main id="main" class="container">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="tiny-spark">✳</span> YOUR NEXT BRAIN BREAK</span>
+      <h1 id="hero-title">Big brain.<br><span class="accent-text">Small quiz.</span></h1>
+      <p class="hero-description">A few questions. A little friendly competition with yourself.<br class="desktop-break"> Let’s find out what you know.</p>
+      <div class="hero-facts">
+        <span><%- include('partials/icon', { name: 'grid' }) %> <%= categories.length %> categories</span>
+        <span><%- include('partials/icon', { name: 'layers' }) %> 5 or 10 questions</span>
+        <span><%- include('partials/icon', { name: 'check' }) %> Instant results</span>
+      </div>
+    </div>
+    <img class="hero-art" src="/images/quiz-orbit.svg" width="420" height="320" alt="Illustrated question cards surrounded by stars and an orbit">
+  </section>
+
+  <section class="builder panel" aria-labelledby="builder-title">
+    <div class="section-heading">
+      <div class="heading-with-number"><span class="step-label">01</span><div><h2 id="builder-title">Make it your kind of challenge.</h2><p>Pick a topic. Set the vibe. You’re ready.</p></div></div>
+      <span class="pill quiet-pill">THE QUIZ BUILDER</span>
+    </div>
+
+    <% if (Object.keys(errors).length) { %>
+      <div class="notice notice-error" role="alert"><%- include('partials/icon', { name: 'info' }) %><div><strong>Almost there.</strong> Check the highlighted settings and try again.</div></div>
+    <% } %>
+
+    <form action="/quiz" method="POST" class="start-form">
+      <div class="field-heading"><span class="field-label">Choose your topic</span><span class="optional-label">A shortcut to your favorites</span></div>
+      <div class="topic-grid" aria-label="Quick topic selection">
+        <% shortcuts.forEach((topic) => { %>
+          <button type="button" class="topic-card <%= values.category === topic.id ? 'is-selected' : '' %>" data-category="<%= topic.id %>" aria-pressed="<%= values.category === topic.id %>">
+            <span class="topic-icon"><%- include('partials/icon', { name: topic.icon }) %></span>
+            <span class="topic-copy"><strong><%= topic.label %></strong><span><%= topic.detail %></span></span>
+            <span class="topic-check"><%- include('partials/icon', { name: 'check' }) %></span>
+          </button>
+        <% }); %>
+      </div>
+
+      <div class="category-field">
+        <label for="category">Explore all categories</label>
+        <div class="select-wrap"><select id="category" name="category" aria-invalid="<%= Boolean(errors.category) %>" aria-describedby="category-hint<%= errors.category ? ' error-category' : '' %>">
+          <option value="any" <%= values.category === 'any' ? 'selected' : '' %>>All topics — surprise me</option>
+          <% categories.forEach((category) => { %>
+            <option value="<%= category.id %>" <%= values.category === String(category.id) ? 'selected' : '' %>><%= category.name %></option>
+          <% }); %>
+        </select><%- include('partials/icon', { name: 'chevron' }) %></div>
+        <p id="category-hint" class="field-hint">Something for the movie buffs, science minds, and everyone in between.</p>
+        <% if (errors.category) { %><p id="error-category" class="field-error"><%= errors.category %></p><% } %>
+      </div>
+
+      <div class="settings-grid">
+        <fieldset class="setting-field"><legend>Set your difficulty</legend>
+          <div class="segmented difficulty-options">
+            <% [{value:'any',label:'Mixed'}, {value:'easy',label:'Easy'}, {value:'medium',label:'Medium'}, {value:'hard',label:'Hard'}].forEach((option) => { %>
+              <label><input type="radio" name="difficulty" value="<%= option.value %>" <%= values.difficulty === option.value ? 'checked' : '' %> required><span><span class="difficulty-dot <%= option.value %>"></span><%= option.label %></span></label>
+            <% }); %>
+          </div>
+          <% if (errors.difficulty) { %><p class="field-error"><%= errors.difficulty %></p><% } %>
+        </fieldset>
+        <fieldset class="setting-field"><legend>How many questions?</legend>
+          <div class="segmented amount-options">
+            <% ['5', '10'].forEach((amount) => { %>
+              <label><input type="radio" name="amount" value="<%= amount %>" <%= values.amount === amount ? 'checked' : '' %> required><span><strong><%= amount %></strong> <%= amount === '5' ? 'Quick round' : 'Full challenge' %></span></label>
+            <% }); %>
+          </div>
+          <% if (errors.amount) { %><p class="field-error"><%= errors.amount %></p><% } %>
+        </fieldset>
+      </div>
+      <div class="builder-action">
+        <p><%- include('partials/icon', { name: 'sparkles' }) %> Fresh questions. A new chance to surprise yourself.</p>
+        <button class="button button-primary" type="submit" data-start-button><span>Let’s play</span><%- include('partials/icon', { name: 'arrow-right' }) %></button>
+      </div>
+    </form>
+  </section>
+
+  <section class="how-section" aria-label="How QuizForge works">
+    <div><span class="how-number">01 /</span><h3>Find your lane</h3><p>Choose something you love, or discover something you don’t know yet.</p></div>
+    <div><span class="how-number">02 /</span><h3>Trust your instinct</h3><p>Choose one answer per question. Take your time and enjoy the challenge.</p></div>
+    <div><span class="how-number">03 /</span><h3>Leave a little wiser</h3><p>Get your score and a full answer review. Every round teaches you something.</p></div>
+  </section>
+</main>
+<%- include('partials/footer') %>

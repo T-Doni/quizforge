@@ -1,0 +1,10 @@
+<%- include('partials/header') %>
+<main id="main" class="container error-page">
+  <div class="error-code" aria-hidden="true"><%= status %><span>?</span></div>
+  <span class="eyebrow">JUST A SMALL DETOUR</span>
+  <h1><%= heading %></h1>
+  <p class="error-description"><%= message %></p>
+  <% if (retryAfter) { %><p class="retry-note">Try again in about <%= retryAfter %> seconds. Your browser is working fine.</p><% } %>
+  <a class="button button-primary" href="/"><%- include('partials/icon', { name: 'arrow-left' }) %> Back to quiz builder</a>
+</main>
+<%- include('partials/footer') %>

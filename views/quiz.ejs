@@ -1,0 +1,36 @@
+<%- include('partials/header') %>
+<main id="main" class="container narrow-container">
+  <div class="page-intro">
+    <a class="back-link" href="/"><%- include('partials/icon', { name: 'arrow-left' }) %> Back to quiz builder</a>
+    <span class="eyebrow">YOUR CHALLENGE STARTS HERE</span>
+    <h1>A little focus.<br><span class="accent-text">A lot of possibility.</span></h1>
+    <div class="meta-pills"><span class="pill"><%= quiz.settings.categoryName %></span><span class="pill"><%= quiz.settings.difficulty === 'any' ? 'Mixed' : quiz.settings.difficulty %> difficulty</span><span class="pill"><%= quiz.questions.length %> questions</span></div>
+  </div>
+  <div class="quiz-progress panel">
+    <div><strong>Your progress</strong><span id="progress-text" aria-live="polite"><%= Object.keys(selected).length %> of <%= quiz.questions.length %> answered</span></div>
+    <progress id="quiz-progress" value="<%= Object.keys(selected).length %>" max="<%= quiz.questions.length %>" aria-label="Questions answered"></progress>
+  </div>
+  <% if (missing.length) { %>
+    <div class="notice notice-error" role="alert"><%- include('partials/icon', { name: 'info' }) %><div><strong>A few answers are missing.</strong> Choose a valid answer for every question. Your other choices have been kept.</div></div>
+  <% } %>
+  <form action="/results" method="POST" id="quiz-form" data-total="<%= quiz.questions.length %>">
+    <input type="hidden" name="quizId" value="<%= quiz.id %>">
+    <% quiz.questions.forEach((question, index) => { %>
+      <fieldset class="question-card panel <%= missing.includes(question.id) ? 'question-error' : '' %>" id="<%= question.id %>">
+        <legend class="sr-only">Question <%= index + 1 %>: <%= question.text %></legend>
+        <div class="question-meta"><span class="question-number">QUESTION <%= String(index + 1).padStart(2, '0') %></span><span class="small-label"><%= question.category.replace(/^Entertainment: |^Science: /, '') %> <span class="footer-dot">·</span> <%= question.difficulty %></span></div>
+        <h2><%= question.text %></h2>
+        <div class="answer-grid">
+          <% question.answers.forEach((answer, answerIndex) => { %>
+            <label class="choice"><input type="radio" name="answer_<%= question.id %>" value="<%= answer.id %>" <%= selected[question.id] === answer.id ? 'checked' : '' %> required>
+              <span class="answer-box"><span class="answer-letter"><%= String.fromCharCode(65 + answerIndex) %></span><span class="answer-text"><%= answer.text %></span><span class="answer-check"><%- include('partials/icon', { name: 'check' }) %></span></span>
+            </label>
+          <% }); %>
+        </div>
+        <% if (missing.includes(question.id)) { %><p class="field-error">Please choose one of the four answers.</p><% } %>
+      </fieldset>
+    <% }); %>
+    <div class="quiz-submit panel"><div><h2>Ready for the reveal?</h2><p>You can change any answer before submitting.</p></div><button type="submit" class="button button-primary">See my results <%- include('partials/icon', { name: 'arrow-right' }) %></button></div>
+  </form>
+</main>
+<%- include('partials/footer') %>

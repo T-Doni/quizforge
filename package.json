@@ -1,0 +1,22 @@
+{
+  "name": "quizforge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A server-rendered trivia quiz built with Express, Axios, EJS and Open Trivia DB.",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --watch app.js",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=22" },
+  "dependencies": {
+    "axios": "^1.20.0",
+    "dotenv": "^18.0.10",
+    "ejs": "^6.0.1",
+    "express": "^5.3.0",
+    "express-session": "^1.19.0"
+  },
+  "devDependencies": { "supertest": "^7.3.2" }
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101119">
+  <meta name="description" content="A little curiosity goes a long way. Build a trivia quiz, find your score, and learn something new with QuizForge.">
+  <title><%= title %> · QuizForge</title>
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="QuizForge home">
+        <span class="brand-mark"><%- include('icon', { name: 'bolt' }) %></span>
+        <span>quiz<span class="brand-light">forge</span><span class="brand-dot">.</span></span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="/" class="nav-link <%= page === 'home' ? 'active' : '' %>" <%- page === 'home' ? 'aria-current="page"' : '' %>>Play a quiz</a>
+        <a href="/about" class="nav-link <%= page === 'about' ? 'active' : '' %>" <%- page === 'about' ? 'aria-current="page"' : '' %>>About</a>
+      </nav>
+      <span class="header-note"><span class="status-dot"></span> Stay curious</span>
+    </div>
+  </header>
