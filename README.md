@@ -2,6 +2,8 @@
 
 **Big brain. Small quiz.** A server-rendered trivia application for the Web Development II individual project. Choose a topic, difficulty, and round length, answer the questions, and get a server-calculated score with a complete answer review.
 
+**Student:** Tanatarov Danial · **Student ID:** 32291
+
 ## Features
 
 - Live categories and multiple-choice questions from **[Open Trivia Database](https://opentdb.com/)**.

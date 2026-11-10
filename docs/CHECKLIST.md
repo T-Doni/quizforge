@@ -19,6 +19,7 @@
 - [x] Desktop 1440×1000 and mobile 375×812 checked for horizontal overflow.
 - [x] Browser console checked for JavaScript errors during the full flow.
 - [x] README and three screenshots captured from the running app.
+- [x] Student details added to the README, API choice post, proposal, and declaration: Tanatarov Danial / 32291.
 
 API key errors are not applicable because OpenTDB needs no key. Other upstream failures are handled.
 
@@ -42,7 +43,7 @@ The automated service tests exercise rate limits, unavailable APIs and timeouts 
 ## Student actions still required
 
 - [ ] Check API availability in your group and register OpenTDB in Canvas (Week 7 requirement).
-- [ ] Complete the student name/ID in the proposal and submit it by Week 9.
+- [ ] Submit the completed proposal by Week 9.
 - [ ] Review every submitted file and make your own meaningful improvements.
 - [ ] Maintain at least 8 meaningful Git commits on different actual days; do not backdate history.
 - [ ] Create/push a GitHub repository and give the instructor access if it is private.

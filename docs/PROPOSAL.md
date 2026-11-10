@@ -1,6 +1,6 @@
 # QuizForge — Custom Trivia Quiz
 
-**Student name / ID:** [Complete before submission]
+**Student name / ID:** Tanatarov Danial / 32291
 
 **Course:** Web Development II (VR 113153)
 

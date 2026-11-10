@@ -4,6 +4,8 @@ Check whether **Open Trivia / OpenTDB** has already been chosen in your group. T
 
 ---
 
+**Student:** Tanatarov Danial — ID 32291
+
 **Project title:** QuizForge — Custom Trivia Quiz
 
 **Chosen API:** Open Trivia Database (OpenTDB)
