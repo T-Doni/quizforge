@@ -12,8 +12,9 @@
 - Answer choices shuffled on the server using Fisher–Yates.
 - Server sessions keep the answer key out of the quiz HTML.
 - Score, percentage, achievement label, and a question-by-question review.
-- Responsive dark interface, labeled form controls, keyboard focus states, and a progress indicator.
+- Warm light interface by default, an optional dark theme saved in the browser, labeled form controls, keyboard focus states, and a progress indicator.
 - Color-coded topic cards, a softly animated hero with quick navigation, and rank-themed result panels; animations respect reduced-motion preferences.
+- Thirteen original local SVG illustrations decorate topic cards, questions, and answer reviews. Vehicles have their own car illustration; geography uses a globe. Artwork follows each question's category, never its correct answer; OpenTDB does not provide question images.
 - Server-side validation, friendly 404/API error pages, and centralized error handling.
 - HTTP request logging, an eight-second API timeout, category caching, and API rate-limit handling.
 
@@ -162,6 +163,8 @@ The repository must show at least **8 meaningful commits on different actual day
 ## Credits and AI assistance
 
 Trivia content: **Open Trivia DB**, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Questions are decoded, answer choices shuffled, and results formatted into a review. Source/license links are also displayed in the application.
+
+Topic illustrations in `public/images/topics/` are original AI-assisted SVG artwork bundled with the app. They do not require an image API or third-party image requests. The theme preference is stored locally as `quizforge.theme`; if browser storage is unavailable, the switch still works for the current page.
 
 Reference documentation: [Express](https://expressjs.com/), [Axios](https://axios-http.com/docs/intro), [EJS](https://ejs.co/), [express-session](https://github.com/expressjs/session), [dotenv](https://github.com/motdotla/dotenv), [Node.js test runner](https://nodejs.org/api/test.html).
 

@@ -37,10 +37,9 @@
       <div class="topic-grid" aria-label="Quick topic selection">
         <% shortcuts.forEach((topic) => { %>
           <button type="button" class="topic-card <%= values.category === topic.id ? 'is-selected' : '' %>" data-category="<%= topic.id %>" data-topic="<%= topic.icon %>" aria-pressed="<%= values.category === topic.id %>">
-            <span class="topic-icon"><%- include('partials/icon', { name: topic.icon }) %></span>
-            <span class="topic-copy"><strong><%= topic.label %></strong><span><%= topic.detail %></span></span>
+            <span class="topic-picture"><img src="/images/topics/<%= topic.icon %>.svg" width="320" height="180" alt="" loading="lazy"></span>
+            <span class="topic-body"><span class="topic-copy"><strong><%= topic.label %></strong><span><%= topic.detail %></span></span><span class="topic-arrow"><%- include('partials/icon', { name: 'arrow-right' }) %></span></span>
             <span class="topic-check"><%- include('partials/icon', { name: 'check' }) %></span>
-            <span class="topic-arrow"><%- include('partials/icon', { name: 'arrow-right' }) %></span>
           </button>
         <% }); %>
       </div>

@@ -7,6 +7,7 @@ const { createTriviaService } = require('./services/trivia-service');
 const createQuizRouter = require('./routes/quiz-routes');
 const requestLogger = require('./middleware/request-logger');
 const { notFound, errorHandler } = require('./middleware/error-handler');
+const { getTopicArt } = require('./utils/topic-art');
 
 // A factory lets integration tests supply a simulated API without changing app code.
 function createApp({ triviaService = createTriviaService() } = {}) {
@@ -15,6 +16,7 @@ function createApp({ triviaService = createTriviaService() } = {}) {
   app.set('view engine', 'ejs');
   app.set('views', path.join(__dirname, 'views'));
   app.locals.year = new Date().getFullYear();
+  app.locals.getTopicArt = getTopicArt;
 
   app.use(requestLogger);
   app.use(express.static(path.join(__dirname, 'public')));

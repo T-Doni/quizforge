@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" fill="none">
+  <path fill="#f3e9de" d="M0 0h320v180H0z"/><circle cx="161" cy="87" r="75" fill="#fffaef"/><path d="m0 146 320-39v73H0" fill="#e4d0bb" fill-opacity=".4"/>
+  <g transform="rotate(-7 159 121)"><rect x="77" y="127" width="167" height="24" rx="6" fill="#a08ab8"/><path d="M91 133h145v12H91" fill="#f4e6d7"/><rect x="88" y="107" width="145" height="22" rx="5" fill="#9eb292"/><path d="M100 112h124v12H100" fill="#faf0de"/></g>
+  <g transform="rotate(5 155 87)"><path d="M67 48q46-15 88 5 42-20 88-5v67q-44-12-88 6-43-18-88-6Z" fill="#b391a2"/><path d="M73 42q43-12 82 6 39-18 82-6v66q-42-11-82 7-40-18-82-7Z" fill="#fff8e9" stroke="#d5bea8" stroke-width="2"/><path d="M155 48v67" stroke="#d1bda7" stroke-width="2"/><path d="m87 61 49 8m-49 5 49 8m-49 5 49 8m38-27 47-7m-47 20 47-7m-47 20 47-7" stroke="#d9c8b5" stroke-width="3" stroke-linecap="round"/><path d="M184 42v43l9-7 9 4V38" fill="#b9a0d1"/></g>
+  <path d="m52 70 3 9 10 3-10 3-3 10-3-10-10-3 10-3Z" fill="#b99a6c"/><path d="m263 37 3 8 8 3-8 3-3 8-3-8-8-3 8-3Z" fill="#ad91c4"/>
+</svg>

@@ -18,8 +18,10 @@
     <% quiz.questions.forEach((question, index) => { %>
       <fieldset class="question-card panel <%= missing.includes(question.id) ? 'question-error' : '' %>" id="<%= question.id %>">
         <legend class="sr-only">Question <%= index + 1 %>: <%= question.text %></legend>
-        <div class="question-meta"><span class="question-number">QUESTION <%= String(index + 1).padStart(2, '0') %></span><span class="small-label"><%= question.category.replace(/^Entertainment: |^Science: /, '') %> <span class="footer-dot">·</span> <%= question.difficulty %></span></div>
-        <h2><%= question.text %></h2>
+        <div class="question-heading">
+          <div class="question-copy"><div class="question-meta"><span class="question-number">QUESTION <%= String(index + 1).padStart(2, '0') %></span><span class="small-label"><%= question.category.replace(/^Entertainment: |^Science: /, '') %> <span class="footer-dot">·</span> <%= question.difficulty %></span></div><h2><%= question.text %></h2></div>
+          <%- include('partials/question-art', { category: question.category }) %>
+        </div>
         <div class="answer-grid">
           <% question.answers.forEach((answer, answerIndex) => { %>
             <label class="choice"><input type="radio" name="answer_<%= question.id %>" value="<%= answer.id %>" <%= selected[question.id] === answer.id ? 'checked' : '' %> required>

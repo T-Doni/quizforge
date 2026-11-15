@@ -16,7 +16,7 @@
   <% result.review.forEach((question, index) => { %>
     <section class="question-card review-card <%= question.isCorrect ? 'review-correct' : 'review-wrong' %> panel" aria-labelledby="review-<%= question.id %>">
       <div class="question-meta"><span class="question-number">QUESTION <%= String(index + 1).padStart(2, '0') %></span><span class="answer-status <%= question.isCorrect ? 'correct-color' : 'wrong-color' %>"><%- include('partials/icon', { name: question.isCorrect ? 'check' : 'x' }) %> <%= question.isCorrect ? 'Got it right' : 'Something new to learn' %></span></div>
-      <h3 id="review-<%= question.id %>"><%= question.text %></h3>
+      <div class="question-heading"><div class="question-copy"><h3 id="review-<%= question.id %>"><%= question.text %></h3></div><%- include('partials/question-art', { category: question.category }) %></div>
       <ul class="review-answers">
         <% question.answers.forEach((answer) => { %>
           <li class="result-answer <%= answer.id === question.correctAnswerId ? 'is-correct' : answer.id === question.selectedAnswerId ? 'is-wrong' : '' %>">

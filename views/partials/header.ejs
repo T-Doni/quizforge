@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101119">
+  <meta name="theme-color" content="#f8f6f1">
   <meta name="description" content="A little curiosity goes a long way. Build a trivia quiz, find your score, and learn something new with QuizForge.">
   <title><%= title %> · QuizForge</title>
   <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <script src="/js/theme.js"></script>
   <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/themes.css">
   <script src="/js/app.js" defer></script>
 </head>
 <body>
@@ -22,6 +24,13 @@
         <a href="/" class="nav-link <%= page === 'home' ? 'active' : '' %>" <%- page === 'home' ? 'aria-current="page"' : '' %>>Play a quiz</a>
         <a href="/about" class="nav-link <%= page === 'about' ? 'active' : '' %>" <%- page === 'about' ? 'aria-current="page"' : '' %>>About</a>
       </nav>
-      <span class="header-note"><span class="status-dot"></span> Stay curious</span>
+      <div class="header-tools">
+        <span class="header-note"><span class="status-dot"></span> Stay curious</span>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" aria-pressed="false" hidden>
+          <span class="theme-icon-moon"><%- include('icon', { name: 'moon' }) %></span>
+          <span class="theme-icon-sun"><%- include('icon', { name: 'sun' }) %></span>
+          <span class="theme-label">Dark mode</span>
+        </button>
+      </div>
     </div>
   </header>
