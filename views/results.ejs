@@ -13,8 +13,17 @@
     <div class="stat-card"><span class="stat-icon accent-text"><%- include('partials/icon', { name: 'target' }) %></span><div><strong><%= result.percentage %>%</strong><span>Accuracy</span></div></div>
   </div>
   <div class="review-heading"><div><span class="eyebrow">THE LEARNING PART</span><h2>Your answer breakdown</h2></div><a class="button button-secondary" href="/">Play another round <%- include('partials/icon', { name: 'arrow-right' }) %></a></div>
+  <div class="review-toolbar" data-review-filters hidden>
+    <div class="review-filter-group" role="group" aria-label="Filter answer review">
+      <button class="review-filter" type="button" data-review-filter="all" aria-pressed="true">All <span><%= result.total %></span></button>
+      <button class="review-filter" type="button" data-review-filter="correct" aria-pressed="false">Correct <span><%= result.correct %></span></button>
+      <button class="review-filter" type="button" data-review-filter="wrong" aria-pressed="false">Incorrect <span><%= result.total - result.correct %></span></button>
+    </div>
+    <p class="review-count" data-review-count role="status" aria-live="polite">Showing <%= result.total %> of <%= result.total %> questions</p>
+  </div>
+  <div class="review-empty panel" id="review-empty" role="status" hidden><%- include('partials/icon', { name: 'sparkles' }) %><h3>Nothing to show here.</h3><p data-review-empty-message></p></div>
   <% result.review.forEach((question, index) => { %>
-    <section class="question-card review-card <%= question.isCorrect ? 'review-correct' : 'review-wrong' %> panel" aria-labelledby="review-<%= question.id %>">
+    <section class="question-card review-card <%= question.isCorrect ? 'review-correct' : 'review-wrong' %> panel" data-answer-correct="<%= question.isCorrect %>" aria-labelledby="review-<%= question.id %>">
       <div class="question-meta"><span class="question-number">QUESTION <%= String(index + 1).padStart(2, '0') %></span><span class="answer-status <%= question.isCorrect ? 'correct-color' : 'wrong-color' %>"><%- include('partials/icon', { name: question.isCorrect ? 'check' : 'x' }) %> <%= question.isCorrect ? 'Got it right' : 'Something new to learn' %></span></div>
       <div class="question-heading"><div class="question-copy"><h3 id="review-<%= question.id %>"><%= question.text %></h3></div><%- include('partials/question-art', { category: question.category }) %></div>
       <ul class="review-answers">

@@ -235,6 +235,15 @@ progress::-moz-progress-bar { background: linear-gradient(90deg, #a884df, #d4b8f
 .review-heading { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 23px; }
 .review-heading .eyebrow { margin-bottom: 10px; }
 .review-heading .button { font-size: 11px; }
+.review-toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+.review-filter-group { display: flex; flex-wrap: wrap; gap: 7px; }
+.review-filter { display: inline-flex; align-items: center; gap: 8px; min-height: 38px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 100px; background: var(--panel); color: var(--muted); font-size: 11px; }
+.review-filter span { font-size: 10px; opacity: .8; }
+.review-filter:hover, .review-filter[aria-pressed='true'] { border-color: var(--accent); color: var(--accent); background: color-mix(in srgb, var(--accent) 9%, var(--panel)); }
+.review-count { color: var(--muted); font-size: 11px; }
+.review-empty { padding: 32px 24px; text-align: center; }
+.review-empty > .icon { width: 30px; height: 30px; color: var(--accent); margin-bottom: 12px; }
+.review-empty p { color: var(--muted); font-size: 13px; margin-top: 10px; }
 .review-card.review-correct { border-left: 3px solid #8eaf6c; }
 .review-card.review-wrong { border-left: 3px solid #bb7d89; }
 .answer-status { display: inline-flex; align-items: center; gap: 5px; padding: 4px 8px; border-radius: 6px; background: color-mix(in srgb, currentColor 8%, transparent); font-size: 10px; }

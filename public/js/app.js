@@ -75,3 +75,27 @@ if (quizForm) {
   window.addEventListener('pageshow', updateProgress);
   updateProgress();
 }
+
+const reviewToolbar = document.querySelector('[data-review-filters]');
+if (reviewToolbar) {
+  const cards = [...document.querySelectorAll('.review-card')];
+  const buttons = [...reviewToolbar.querySelectorAll('[data-review-filter]')];
+  const empty = document.querySelector('#review-empty');
+  function filterReview(filter) {
+    let shown = 0;
+    cards.forEach((card) => {
+      const matches = filter === 'all' || card.dataset.answerCorrect === String(filter === 'correct');
+      card.hidden = !matches;
+      if (matches) shown += 1;
+    });
+    buttons.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.reviewFilter === filter)));
+    reviewToolbar.querySelector('[data-review-count]').textContent = `Showing ${shown} of ${cards.length} questions`;
+    empty.hidden = shown !== 0;
+    empty.querySelector('[data-review-empty-message]').textContent = filter === 'wrong'
+      ? 'No incorrect answers. A perfect round!'
+      : 'No correct answers this time. Review the other answers and try another round.';
+  }
+  buttons.forEach((button) => button.addEventListener('click', () => filterReview(button.dataset.reviewFilter)));
+  reviewToolbar.hidden = false;
+  filterReview('all');
+}
