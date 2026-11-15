@@ -1,4 +1,5 @@
 // These enhancements are optional: normal HTML form submission still works without JS.
+const startForm = document.querySelector('.start-form');
 const categorySelect = document.querySelector('#category');
 const topicButtons = document.querySelectorAll('[data-category]');
 function syncTopics() {
@@ -9,6 +10,20 @@ function syncTopics() {
   });
 }
 if (categorySelect) {
+  // Only restore valid available choices, and never overwrite a server validation error.
+  if (startForm?.dataset.restoreSettings === 'true') {
+    try {
+      const saved = JSON.parse(localStorage.getItem('quizforge.settings'));
+      if ([...categorySelect.options].some((option) => option.value === saved?.category)) {
+        categorySelect.value = saved.category;
+      }
+      for (const name of ['difficulty', 'amount']) {
+        const choice = [...startForm.querySelectorAll(`input[name="${name}"]`)]
+          .find((input) => input.value === saved?.[name]);
+        if (choice) choice.checked = true;
+      }
+    } catch { /* Defaults remain usable when storage is blocked or malformed. */ }
+  }
   topicButtons.forEach((button) => button.addEventListener('click', () => {
     categorySelect.value = button.dataset.category;
     syncTopics();
@@ -17,10 +32,16 @@ if (categorySelect) {
   syncTopics();
 }
 
-const startForm = document.querySelector('.start-form');
 const startButton = document.querySelector('[data-start-button]');
 if (startForm && startButton) {
   startForm.addEventListener('submit', () => {
+    try {
+      localStorage.setItem('quizforge.settings', JSON.stringify({
+        category: categorySelect.value,
+        difficulty: startForm.elements.difficulty.value,
+        amount: startForm.elements.amount.value
+      }));
+    } catch { /* Remembering settings is optional. */ }
     startButton.disabled = true;
     startButton.querySelector('span').textContent = 'Finding your questions…';
   });

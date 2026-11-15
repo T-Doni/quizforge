@@ -32,7 +32,7 @@
       <div class="notice notice-error" role="alert"><%- include('partials/icon', { name: 'info' }) %><div><strong>Almost there.</strong> Check the highlighted settings and try again.</div></div>
     <% } %>
 
-    <form action="/quiz" method="POST" class="start-form">
+    <form action="/quiz" method="POST" class="start-form" data-restore-settings="<%= Object.keys(errors).length === 0 %>">
       <div class="field-heading"><span class="field-label">Choose your topic</span><span class="optional-label">A shortcut to your favorites</span></div>
       <div class="topic-grid" aria-label="Quick topic selection">
         <% shortcuts.forEach((topic) => { %>
