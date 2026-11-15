@@ -155,7 +155,7 @@ Actual application pages captured using a live OpenTDB round. Content changes fr
 
 - [API choice discussion post](docs/API_CHOICE.md) — first confirm OpenTDB is not already assigned in your group.
 - [Project proposal](docs/PROPOSAL.md) — draft for the Week 9 submission.
-- [AI Declaration](docs/AI_DECLARATION.md) — identifies the student and actual assistant involvement; personal work notes and understanding confirmation still need review.
+- [AI Declaration](docs/AI_DECLARATION.md) — student details, actual AI assistance, personal interface review, and the student's understanding confirmation.
 - [Russian defense guide](docs/DEFENSE_GUIDE.ru.md) — request flow, important concepts, and live-edit practice.
 - [Russian Git/GitHub guide](docs/GIT_GUIDE.ru.md) — first commit, pushing, and timing relative to submission.
 - [Personal verification worksheet](docs/MY_CHECKS.ru.md) — record checks and edits you actually perform yourself.

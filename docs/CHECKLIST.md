@@ -64,7 +64,7 @@ These are assistant-run checks, not a declaration that the student personally re
 - [ ] Review every submitted file and make your own meaningful improvements.
 - [ ] Verify at least 8 meaningful Git commits on GitHub using their actual dates and the applicable instructor requirements.
 - [ ] Verify that the instructor can open the GitHub repository; grant access if it is private.
-- [ ] Complete the AI Declaration with your actual work and understanding confirmation.
+- [x] AI Declaration completed with actual project feedback, interface review, and the student's requested understanding confirmation.
 - [ ] Preserve prompts, AI outputs and drafts for 30 days after final grades.
 - [ ] Practice a 5–7 minute demo, questions, and a small live code change without AI.
 - [ ] Check the precise Week 11 deadline in Canvas.
