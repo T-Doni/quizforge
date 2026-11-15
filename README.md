@@ -4,6 +4,8 @@
 
 **Student:** Tanatarov Danial · **Student ID:** 32291
 
+**Repository:** https://github.com/T-Doni/quizforge
+
 ## Features
 
 - Live categories and multiple-choice questions from **[Open Trivia Database](https://opentdb.com/)**.
@@ -12,6 +14,7 @@
 - Answer choices shuffled on the server using Fisher–Yates.
 - Server sessions keep the answer key out of the quiz HTML.
 - Score, percentage, achievement label, and a question-by-question review.
+- Remembered quiz settings, a keyboard-friendly jump to unanswered questions, and All/Correct/Incorrect review filters with empty-state messages.
 - Warm light interface by default, an optional dark theme saved in the browser, labeled form controls, keyboard focus states, and a progress indicator.
 - Color-coded topic cards, a softly animated hero with quick navigation, and rank-themed result panels; animations respect reduced-motion preferences.
 - Thirteen original local SVG illustrations decorate topic cards, questions, and answer reviews. Vehicles have their own car illustration; geography uses a globe. Artwork follows each question's category, never its correct answer; OpenTDB does not provide question images.
@@ -152,19 +155,22 @@ Actual application pages captured using a live OpenTDB round. Content changes fr
 
 - [API choice discussion post](docs/API_CHOICE.md) — first confirm OpenTDB is not already assigned in your group.
 - [Project proposal](docs/PROPOSAL.md) — draft for the Week 9 submission.
-- [AI Declaration](docs/AI_DECLARATION.md) — includes actual assistant involvement; student fields still need completion.
+- [AI Declaration](docs/AI_DECLARATION.md) — identifies the student and actual assistant involvement; personal work notes and understanding confirmation still need review.
 - [Russian defense guide](docs/DEFENSE_GUIDE.ru.md) — request flow, important concepts, and live-edit practice.
 - [Russian Git/GitHub guide](docs/GIT_GUIDE.ru.md) — first commit, pushing, and timing relative to submission.
 - [Personal verification worksheet](docs/MY_CHECKS.ru.md) — record checks and edits you actually perform yourself.
 - [Submission and verification checklist](docs/CHECKLIST.md).
+- [Final submission guide](docs/SUBMISSION.ru.md) — repository verification, archive contents, and remaining personal confirmations.
 
-The repository must show at least **8 meaningful commits on different actual days**. A Git repository has been initialized; commit your real work as it happens. The generated starting code is not a substitute for a genuine development history.
+The submission preparation targets at least **8 meaningful commits** recording actual work, with their real timestamps. Inspect the history with `git log --oneline` and the count with `git rev-list --count HEAD`. Follow the instructor's applicable submission requirements, and package the same version that is available on GitHub.
 
 ## Credits and AI assistance
 
 Trivia content: **Open Trivia DB**, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Questions are decoded, answer choices shuffled, and results formatted into a review. Source/license links are also displayed in the application.
 
 Topic illustrations in `public/images/topics/` are original AI-assisted SVG artwork bundled with the app. They do not require an image API or third-party image requests. The theme preference is stored locally as `quizforge.theme`; if browser storage is unavailable, the switch still works for the current page.
+
+The last submitted quiz settings are stored as `quizforge.settings`. Only available categories and valid difficulty/length options are restored. Stored settings never replace server-side validation messages. Theme and settings storage contains no questions, answer keys, or scores. With JavaScript disabled, standard form submission and the complete answer review remain available.
 
 Reference documentation: [Express](https://expressjs.com/), [Axios](https://axios-http.com/docs/intro), [EJS](https://ejs.co/), [express-session](https://github.com/expressjs/session), [dotenv](https://github.com/motdotla/dotenv), [Node.js test runner](https://nodejs.org/api/test.html).
 

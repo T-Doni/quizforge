@@ -20,6 +20,8 @@
 - [x] Browser console checked for JavaScript errors during the full flow.
 - [x] README and three screenshots captured from the running app.
 - [x] Student details added to the README, API choice post, proposal, and declaration: Tanatarov Danial / 32291.
+- [x] Light/dark themes, remembered quiz settings, category illustrations, unanswered-question navigation, and answer-review filters implemented.
+- [x] GitHub remote connected to https://github.com/T-Doni/quizforge.
 
 API key errors are not applicable because OpenTDB needs no key. Other upstream failures are handled.
 
@@ -37,16 +39,31 @@ API key errors are not applicable because OpenTDB needs no key. Other upstream f
 10. Test 10 questions and Mixed difficulty, allowing six seconds between new API requests.
 11. Try the site at a mobile width and navigate form controls with the keyboard.
 12. Run `npm test` and read what each test verifies. Simulated errors print diagnostics to the terminal deliberately.
+13. Switch themes, reload, and check that the selected theme remains. Start a round, return home, and check the saved settings.
+14. Use Next unanswered with skipped questions, then finish all answers and check that the link disappears.
+15. In results, select All, Correct, and Incorrect; check the visible count and empty-state messages for perfect/zero scores.
 
 The automated service tests exercise rate limits, unavailable APIs and timeouts without deliberately overloading OpenTDB.
+
+## Assistant verification — 15 November 2026
+
+- `npm test`: all 13 tests passed after the final interface changes.
+- Browser checks confirmed saved settings after returning home/reloading, safe defaults for invalid storage, and preservation of server validation responses.
+- Browser checks confirmed keyboard focus on the next unanswered question and correct behavior after a missing-answer response.
+- Review filters were checked for 3/5, 5/5 and 0/5 results, including empty views, counts, keyboard activation, dark mode, and 320px layout.
+- A live OpenTDB round produced the expected 3/5 (60%) result. Both themes were checked at 320, 375, 768 and 1440px; all 13 illustrations loaded and no JavaScript errors were recorded.
+- Theme switching and form submission remained usable with browser storage blocked. Without JavaScript, the complete quiz/result flow remained available and optional controls stayed hidden.
+- Screenshots in `docs/screenshots/` were refreshed from the live round.
+
+These are assistant-run checks, not a declaration that the student personally repeated them.
 
 ## Student actions still required
 
 - [ ] Check API availability in your group and register OpenTDB in Canvas (Week 7 requirement).
 - [ ] Submit the completed proposal by Week 9.
 - [ ] Review every submitted file and make your own meaningful improvements.
-- [ ] Maintain at least 8 meaningful Git commits on different actual days; do not backdate history.
-- [ ] Create/push a GitHub repository and give the instructor access if it is private.
+- [ ] Verify at least 8 meaningful Git commits on GitHub using their actual dates and the applicable instructor requirements.
+- [ ] Verify that the instructor can open the GitHub repository; grant access if it is private.
 - [ ] Complete the AI Declaration with your actual work and understanding confirmation.
 - [ ] Preserve prompts, AI outputs and drafts for 30 days after final grades.
 - [ ] Practice a 5–7 minute demo, questions, and a small live code change without AI.
