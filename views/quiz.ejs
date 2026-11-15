@@ -7,8 +7,9 @@
     <div class="meta-pills"><span class="pill"><%= quiz.settings.categoryName %></span><span class="pill"><%= quiz.settings.difficulty === 'any' ? 'Mixed' : quiz.settings.difficulty %> difficulty</span><span class="pill"><%= quiz.questions.length %> questions</span></div>
   </div>
   <div class="quiz-progress panel">
-    <div><strong>Your progress</strong><span id="progress-text" aria-live="polite"><%= Object.keys(selected).length %> of <%= quiz.questions.length %> answered</span></div>
+    <div class="progress-summary"><strong>Your progress</strong><span id="progress-text" aria-live="polite"><%= Object.keys(selected).length %> of <%= quiz.questions.length %> answered</span></div>
     <progress id="quiz-progress" value="<%= Object.keys(selected).length %>" max="<%= quiz.questions.length %>" aria-label="Questions answered"></progress>
+    <div class="quiz-progress-actions" data-question-navigation hidden><span>Skipped a question?</span><button class="question-jump" type="button" data-next-unanswered aria-controls="quiz-form">Next unanswered <%- include('partials/icon', { name: 'arrow-right' }) %></button></div>
   </div>
   <% if (missing.length) { %>
     <div class="notice notice-error" role="alert"><%- include('partials/icon', { name: 'info' }) %><div><strong>A few answers are missing.</strong> Choose a valid answer for every question. Your other choices have been kept.</div></div>
